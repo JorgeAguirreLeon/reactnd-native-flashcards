@@ -1,5 +1,22 @@
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
+## Flashcards
+
+The main view has 2 tabs:
+
+- List of decks, to work with them.
+- Form to create a new deck of cards.
+
+If you select a deck of cards from the list, you will see it's details. From this
+view you can *add a new card* to the deck or *quiz yourself*.
+
+- Adding a new cars takes you to a view with the form to add a new card.
+- If you choose to quiz yourself you will have to work through the flashcards. You
+will see the results when you finish the deck of cards.
+
+A local notification will be sent to you daily to remind you to work on your decks.
+
+
 ## Available Scripts
 
 If Yarn was installed when the project was initialized, then dependencies will have been installed via Yarn, and you should probably use it to run these commands as well. Unlike dependency installation, command running syntax is identical for Yarn and NPM at the time of this writing.
