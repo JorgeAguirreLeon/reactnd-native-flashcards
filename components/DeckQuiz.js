@@ -1,8 +1,9 @@
 import React, {Component}              from 'react'
 import {View, Text}                    from 'react-native'
-import {StyleSheet, Button}            from 'react-native'
+import {StyleSheet}            from 'react-native'
 import {connect}                       from 'react-redux'
 import {NavigationActions}             from 'react-navigation'
+import Button                          from './Button'
 
 class DeckQuiz extends Component {
 
@@ -87,7 +88,6 @@ class DeckQuiz extends Component {
             color='black'
             onPress={this.showAnswer}
             title='Show answer'
-            accessibilityLabel='Show the answer for this question'
             disabled={this.state.visible === 'answer'}
           />
         </View>
@@ -96,14 +96,12 @@ class DeckQuiz extends Component {
           color='green'
           onPress={this.correctAnswer}
           title='Correct'
-          accessibilityLabel='Mark guessed answer as correct'
         />
         <Button
           style={styles.button}
           color='red'
           onPress={this.incorrectAnswer}
           title='Incorrect'
-          accessibilityLabel='Mark guessed answer as incorrect'
           disabled={questions.length === 0}
         />
       </View>
@@ -149,6 +147,5 @@ const styles = StyleSheet.create({
   button: {
     padding: 6,
     margin: 10,
-    width: 180
   }
 })

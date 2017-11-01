@@ -1,10 +1,11 @@
 import React, {Component}              from 'react'
 import {View, Text}                    from 'react-native'
-import {StyleSheet, Button}            from 'react-native'
+import {StyleSheet}                    from 'react-native'
 import {connect}                       from 'react-redux'
 import {NavigationActions}             from 'react-navigation'
 import {clearLocalNotification}        from '../utils/notifications'
 import {setLocalNotification}          from '../utils/notifications'
+import Button                          from './Button'
 
 class DeckData extends Component {
 
@@ -42,17 +43,15 @@ class DeckData extends Component {
         </View>
         <Button
           style={styles.button}
-          color='black'
+          color='white'
           onPress={this.addCard.bind(this, title)}
           title='Add card'
-          accessibilityLabel='Add card to this deck'
         />
         <Button
           style={styles.button}
           color='black'
           onPress={this.quiz.bind(this, title)}
           title='Start quiz'
-          accessibilityLabel='Start quiz on this deck'
           disabled={questions.length === 0}
         />
       </View>

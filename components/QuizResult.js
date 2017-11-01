@@ -1,10 +1,11 @@
 import React, {Component}              from 'react'
 import {View, Text}                    from 'react-native'
-import {StyleSheet, Button}            from 'react-native'
+import {StyleSheet}                    from 'react-native'
 import {connect}                       from 'react-redux'
 import {NavigationActions}             from 'react-navigation'
 import {clearLocalNotification}        from '../utils/notifications'
 import {setLocalNotification}          from '../utils/notifications'
+import Button                          from './Button'
 
 class QuizResult extends Component {
 
@@ -51,7 +52,6 @@ class QuizResult extends Component {
           color='black'
           onPress={this.quiz.bind(this, title)}
           title='Restart quiz'
-          accessibilityLabel='Start quiz on this deck'
         />
       </View>
     )

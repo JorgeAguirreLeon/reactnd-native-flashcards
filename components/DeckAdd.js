@@ -1,11 +1,12 @@
 import React, {Component}              from 'react'
 import {View, Text}                    from 'react-native'
-import {StyleSheet, Button}            from 'react-native'
+import {StyleSheet}                    from 'react-native'
 import {TextInput, Platform}           from 'react-native'
 import {connect}                       from 'react-redux'
 import {NavigationActions}             from 'react-navigation'
 import {saveDeckTitle}                 from '../utils/api'
 import {deckAdd}                       from '../actions'
+import Button                          from './Button'
 
 class DeckAdd extends Component {
 
@@ -35,7 +36,6 @@ class DeckAdd extends Component {
           color='black'
           onPress={this.submit}
           title='Submit'
-          accessibilityLabel='Create a new deck'
           disabled={this.state.text.trim() === '' || this.props.titles.indexOf(this.state.text.trim()) != -1}
         />
       </View>
