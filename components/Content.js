@@ -8,7 +8,8 @@ import {MaterialCommunityIcons}           from '@expo/vector-icons'
 import DeckAdd                            from './DeckAdd'
 import DeckList                           from './DeckList'
 import DeckQuiz                           from './DeckQuiz'
-import {purple, white}                    from '../utils/colors'
+import DeckData                           from './DeckData'
+import CardAdd                            from './CardAdd'
 import {getDecks}                         from '../utils/api'
 import {decksSet}                         from '../actions'
 
@@ -41,10 +42,10 @@ const Tabs = TabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? purple : white,
+    activeTintColor: Platform.OS === 'ios' ? 'black' : 'white',
     style: {
       height: 56,
-      backgroundColor: Platform.OS == 'ios' ? white : purple,
+      backgroundColor: Platform.OS == 'ios' ? 'white' : 'black',
       shadowColor: 'rgba(0,0,0,.24)',
       shadowOffset: {width: 0, height: 3},
       shadowRadius: 6,
@@ -59,13 +60,34 @@ const MainNavigator = StackNavigator({
   },
   DeckQuiz: {
     screen: DeckQuiz,
+    title: 'Quiz',
     navigationOptions: {
-      headerTintColor: white,
+      headerTintColor: 'white',
       headerStyle: {
-        backgroundColor: purple
+        backgroundColor: 'black'
       }
     }
-  }
+  },
+  DeckData: {
+    screen: DeckData,
+    navigationOptions: ({navigation})=> ({
+      title: `${navigation.state.params.deck}`,
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    })
+  },
+  CardAdd: {
+    screen: CardAdd,
+    navigationOptions: {
+      title: 'Add a card',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    }
+  },
 })
 
 class Content extends Component {
@@ -81,7 +103,7 @@ class Content extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <MainStatusBar backgroundColor={purple} barStyle='light-content' />
+        <MainStatusBar backgroundColor={'black'} barStyle='light-content' />
         <MainNavigator />
       </View>
     );
