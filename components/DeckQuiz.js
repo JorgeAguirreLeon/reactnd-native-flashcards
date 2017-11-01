@@ -52,7 +52,13 @@ class DeckQuiz extends Component {
             routeName: 'DeckData',
             params: {deck}
           }),
-          NavigationActions.navigate({routeName: 'QuizResult'})
+          NavigationActions.navigate({
+            routeName: 'QuizResult',
+            params: {
+              deck,
+              answers: this.state.answers
+            }
+          })
         ]
       }))
     }
