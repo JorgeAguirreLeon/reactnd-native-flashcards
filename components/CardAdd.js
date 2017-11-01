@@ -1,7 +1,7 @@
 import React, {Component}              from 'react'
 import {View, Text}                    from 'react-native'
 import {StyleSheet, Button}            from 'react-native'
-import {TextInput}                     from 'react-native'
+import {TextInput, Platform}           from 'react-native'
 import {connect}                       from 'react-redux'
 import {NavigationActions}             from 'react-navigation'
 import {addCardToDeck}                 from '../utils/api'
@@ -29,12 +29,12 @@ class CardAdd extends Component {
         <Text style={styles.text}>Add a new card to the deck</Text>
         <Text style={styles.label}>Question</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, Platform.OS === 'ios' ? styles.iosInput : {}]}
           onChangeText={(question) => this.setState({question})}
         />
         <Text style={styles.label}>Answer</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, Platform.OS === 'ios' ? styles.iosInput : {}]}
           onChangeText={(answer) => this.setState({answer})}
         />
         <Button
@@ -74,24 +74,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  row: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
-  },
   text: {
     fontSize: 36,
     textAlign: 'center',
     marginBottom: 40
   },
   input: {
-    borderColor: 'gray',
-    borderWidth: 1,
     marginBottom: 20,
     marginTop: 10,
     width: 290,
-    height: 40,
+    height: 60,
     padding: 8,
+  },
+  iosInput: {
+    backgroundColor: '#ededed'
   },
   button: {
     marginTop: 15,

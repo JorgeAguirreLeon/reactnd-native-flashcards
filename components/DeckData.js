@@ -3,6 +3,8 @@ import {View, Text}                    from 'react-native'
 import {StyleSheet, Button}            from 'react-native'
 import {connect}                       from 'react-redux'
 import {NavigationActions}             from 'react-navigation'
+import {clearLocalNotification}        from '../utils/notifications'
+import {setLocalNotification}          from '../utils/notifications'
 
 class DeckData extends Component {
 
@@ -10,10 +12,14 @@ class DeckData extends Component {
     text: ''
   }
 
-  quiz = ()=> {
+  quiz = (deck)=> {
+
+    clearLocalNotification()
+      .then(setLocalNotification)
 
     this.props.navigation.dispatch(NavigationActions.navigate({
-      routeName: 'DeckQuiz'
+      routeName: 'DeckQuiz',
+      params: {deck}
     }))
   }
 
@@ -44,7 +50,7 @@ class DeckData extends Component {
         <Button
           style={styles.button}
           color='black'
-          onPress={this.quiz}
+          onPress={this.quiz.bind(this, title)}
           title='Start quiz'
           accessibilityLabel='Start quiz on this deck'
           disabled={questions.length === 0}
@@ -74,11 +80,6 @@ const styles = StyleSheet.create({
   },
   info: {
     marginBottom: 80
-  },
-  row: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
   },
   text: {
     fontSize: 36,

@@ -37,10 +37,9 @@ class DeckList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const {decks} = state
+function mapStateToProps({decks}) {
   return {
-    decks: Object.keys(decks).map(key=>decks[key])
+    decks: Object.keys(decks || {}).map(key=>decks[key])
   }
 }
 

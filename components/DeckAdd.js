@@ -1,7 +1,7 @@
 import React, {Component}              from 'react'
 import {View, Text}                    from 'react-native'
 import {StyleSheet, Button}            from 'react-native'
-import {TextInput}                     from 'react-native'
+import {TextInput, Platform}           from 'react-native'
 import {connect}                       from 'react-redux'
 import {NavigationActions}             from 'react-navigation'
 import {saveDeckTitle}                 from '../utils/api'
@@ -27,7 +27,7 @@ class DeckAdd extends Component {
       <View style={styles.container}>
         <Text style={styles.text}>What is the title of your new deck?</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, Platform.OS === 'ios' ? styles.iosInput : {}]}
           onChangeText={(text) => this.setState({text})}
         />
         <Button
@@ -46,7 +46,7 @@ class DeckAdd extends Component {
 
 function mapStateToProps({decks}) {
   return {
-    titles: Object.keys(decks)
+    titles: Object.keys(decks || {})
   }
 }
 
@@ -66,22 +66,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  row: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
-  },
   text: {
     fontSize: 36,
     textAlign: 'center'
   },
   input: {
-    borderColor: 'gray',
-    borderWidth: 1,
     margin: 40,
     width: 250,
-    height: 40,
+    height: 60,
     padding: 8,
+  },
+  iosInput: {
+    backgroundColor: '#ededed'
   },
   button: {
     padding: 6

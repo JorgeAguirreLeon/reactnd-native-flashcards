@@ -10,8 +10,10 @@ import DeckList                           from './DeckList'
 import DeckQuiz                           from './DeckQuiz'
 import DeckData                           from './DeckData'
 import CardAdd                            from './CardAdd'
+import QuizResult                         from './QuizResult'
 import {getDecks}                         from '../utils/api'
 import {decksSet}                         from '../actions'
+import {setLocalNotification}             from '../utils/notifications'
 
 
 function MainStatusBar({backgroundColor, ...props}) {
@@ -88,6 +90,16 @@ const MainNavigator = StackNavigator({
       }
     }
   },
+  QuizResult: {
+    screen: QuizResult,
+    navigationOptions: {
+      title: 'Quiz Results',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    }
+  }
 })
 
 class Content extends Component {
@@ -98,6 +110,8 @@ class Content extends Component {
         this.props.loadDecks(decks)
         return decks
       })
+
+    setLocalNotification()
   }
 
   render() {
