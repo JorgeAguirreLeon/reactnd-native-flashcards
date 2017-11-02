@@ -76,8 +76,13 @@ class DeckQuiz extends Component {
 
     const intro_text = this.state.visible === 'question' ? 'Question:' : 'Answer:'
 
+    const questions_remaining = questions.length - current
+
     return (
       <View style={styles.container}>
+        <View style={styles.intro}>
+          <Text style={styles.introText}>{questions_remaining > 1 ? `${questions_remaining} questions remaining` : 'Last question!'}</Text>
+        </View>
         <View style={styles.info}>
           <Text style={styles.subtext}>{intro_text}</Text>
           <Text style={styles.text}>{questions[current][this.state.visible]}</Text>
@@ -123,9 +128,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    paddingTop: 10,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  intro: {
+    marginBottom: 40,
+  },
+  introText: {
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
   },
   info: {
     marginBottom: 100
