@@ -16,11 +16,21 @@ class DeckAdd extends Component {
 
   submit = ()=> {
 
-    this.props.createDeck(this.state.text)
+    const {text} = this.state
 
-    this.props.navigation.dispatch(NavigationActions.navigate({
-      routeName: 'DeckList'
-    }))
+    this.props.createDeck(text)
+      .then(()=> {
+        this.props.navigation.dispatch(NavigationActions.reset({
+          index: 1,
+          actions: [
+            NavigationActions.navigate({routeName: 'Home'}),
+            NavigationActions.navigate({
+              routeName: 'DeckData',
+              params: {deck: text}
+            })
+          ]
+        }))
+      })
   }
 
   render() {
