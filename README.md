@@ -59,3 +59,14 @@ I've checked the app works in:
 
 > iPhone simulator
 > Android (Actual device)
+
+## Dependencies
+
+This app was built using:
+
+- react (For the JSX part)
+- react-native (To build mobile parts)
+- redux (To handle data)
+- react-redux (Custom bindings for React)
+- react-navigation (To switch between `<View>` in the app)
+- expo (For the cross device APIs to ease development)
